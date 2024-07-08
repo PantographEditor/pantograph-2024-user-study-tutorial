@@ -38216,7 +38216,7 @@
   };
   var mapstoElem = /* @__PURE__ */ makePuncElem("mapsto")("=>");
   var letElem = /* @__PURE__ */ makePuncElem("let")("let");
-  var lambdaElem = /* @__PURE__ */ makePuncElem("lambda")("\u03BB");
+  var lambdaElem = /* @__PURE__ */ makePuncElem("lambda")("fun");
   var isValidSelectionSorts = function(v) {
     if (v.bottom.value0 instanceof MInj && (v.bottom.value0.value0 instanceof SInj && (v.bottom.value0.value0.value0 instanceof TermSort && (v.top.value0 instanceof MInj && (v.top.value0.value0 instanceof SInj && v.top.value0.value0.value0 instanceof TermSort))))) {
       return true;
@@ -38918,7 +38918,7 @@
         }
         ;
         if (v.value0 instanceof Lam && v.value1.length === 3) {
-          return parens(appendSpaced("lam")(appendSpaced(v["value1"][0])(appendSpaced(":")(appendSpaced(v["value1"][1])(appendSpaced("=>")(v["value1"][2]))))));
+          return parens(appendSpaced("fun")(appendSpaced(v["value1"][0])(appendSpaced(":")(appendSpaced(v["value1"][1])(appendSpaced("=>")(v["value1"][2]))))));
         }
         ;
         if (v.value0 instanceof Let && v.value1.length === 4) {
@@ -39771,7 +39771,7 @@
     });
   };
   var editsAtHoleInterior = function(cursorSort) {
-    return append17(fromFoldable18(getVarEdits(cursorSort)))(mapMaybe(identity21)(append17([makeSubEditFromTerm2(newTermFromRule2(If.value))("if")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(Lam.value))("lambda")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(Let.value))("let")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(App2.value))("(")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(NilRule.value))("nil")(cursorSort), getWrapInAppEdit("cons")(cursorSort)(newTermFromRule2(ConsRule.value)), getWrapInAppEdit("head")(cursorSort)(newTermFromRule2(HeadRule.value)), getWrapInAppEdit("tail")(cursorSort)(newTermFromRule2(TailRule.value)), getWrapInAppEdit("index")(cursorSort)(newTermFromRule2(IndexRule.value)), getWrapInAppEdit("length")(cursorSort)(newTermFromRule2(LengthRule.value)), getWrapInAppEdit("append")(cursorSort)(newTermFromRule2(AppendRule.value)), makeSubEditFromTerm2(newTermFromRule2(ListMatchRule.value))("match")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(EqualsRule.value))("==")(cursorSort)])(append17(mapFlipped6(allPossible1)(function(constant) {
+    return append17(fromFoldable18(getVarEdits(cursorSort)))(mapMaybe(identity21)(append17([makeSubEditFromTerm2(newTermFromRule2(If.value))("if")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(Lam.value))("fun")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(Let.value))("let")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(App2.value))("(")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(NilRule.value))("nil")(cursorSort), getWrapInAppEdit("cons")(cursorSort)(newTermFromRule2(ConsRule.value)), getWrapInAppEdit("head")(cursorSort)(newTermFromRule2(HeadRule.value)), getWrapInAppEdit("tail")(cursorSort)(newTermFromRule2(TailRule.value)), getWrapInAppEdit("index")(cursorSort)(newTermFromRule2(IndexRule.value)), getWrapInAppEdit("length")(cursorSort)(newTermFromRule2(LengthRule.value)), getWrapInAppEdit("append")(cursorSort)(newTermFromRule2(AppendRule.value)), makeSubEditFromTerm2(newTermFromRule2(ListMatchRule.value))("match")(cursorSort), makeSubEditFromTerm2(newTermFromRule2(EqualsRule.value))("==")(cursorSort)])(append17(mapFlipped6(allPossible1)(function(constant) {
       return getWrapInAppEdit(constantName(constant))(cursorSort)(newTermFromRule2(new ConstantRule(constant)));
     }))(mapFlipped6(allPossible2)(function(op) {
       return makeSubEditFromTerm2(newTermFromRule2(new InfixRule(op)))(infixName(op))(cursorSort);
@@ -39813,7 +39813,7 @@
         return [];
       }
       ;
-      return append17(mapMaybe(identity21)([makeEditFromPath2(newPathFromRule2(Lam.value)(2))("lambda")(cursorSort), makeEditFromPath2(newPathFromRule2(Let.value)(3))("let")(cursorSort), makeEditFromPath2(newPathFromRule2(Let.value)(2))("let")(cursorSort), makeEditFromPath2(newPathFromRule2(App2.value)(0))("(")(cursorSort)]))(append17(concat(mapFlipped6(allPossible2)(function(op) {
+      return append17(mapMaybe(identity21)([makeEditFromPath2(newPathFromRule2(Lam.value)(2))("fun")(cursorSort), makeEditFromPath2(newPathFromRule2(Let.value)(3))("let")(cursorSort), makeEditFromPath2(newPathFromRule2(Let.value)(2))("let")(cursorSort), makeEditFromPath2(newPathFromRule2(App2.value)(0))("(")(cursorSort)]))(append17(concat(mapFlipped6(allPossible2)(function(op) {
         return fromFoldable18(makeWrapEdits2(isValidCursorSort)(isValidSelectionSorts)(forgetSorts)(splitChange)(infixName(op))(cursorSort)(newTermFromRule2(new InfixRule(op))));
       })))(append17(fromFoldable18(getVarWraps(cursorSort)))(append17(reverse(fromFoldable18(getAppliedWrapEdits("cons")(cursorSort)(newTermFromRule2(ConsRule.value)))))(append17(reverse(fromFoldable18(getAppliedWrapEdits("head")(cursorSort)(newTermFromRule2(HeadRule.value)))))(append17(reverse(fromFoldable18(getAppliedWrapEdits("tail")(cursorSort)(newTermFromRule2(TailRule.value)))))(append17(reverse(fromFoldable18(getAppliedWrapEdits("index")(cursorSort)(newTermFromRule2(IndexRule.value)))))(append17(reverse(fromFoldable18(getAppliedWrapEdits("length")(cursorSort)(newTermFromRule2(LengthRule.value)))))(append17(reverse(fromFoldable18(getAppliedWrapEdits("append")(cursorSort)(newTermFromRule2(AppendRule.value)))))(append17(fromFoldable18(getAppliedWrapEdits("match")(cursorSort)(newTermFromRule2(ListMatchRule.value))))(append17(catMaybes([makeEditFromPath2(newPathFromRule2(If.value)(1))("if")(cursorSort)]))(append17(fromFoldable18(makeWrapEdits2(isValidCursorSort)(isValidSelectionSorts)(forgetSorts)(splitChange)("==")(cursorSort)(newTermFromRule2(EqualsRule.value))))(concat(mapFlipped6(allPossible1)(function(constant) {
         return fromFoldable18(getAppliedWrapEdits(constantName(constant))(cursorSort)(newTermFromRule2(new ConstantRule(constant))));
